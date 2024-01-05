@@ -45,19 +45,19 @@ services:
     networks:
       - postgres
       - microservice-network
-  config-server:
-    platform: linux/amd64
-    image: liuzongrui1999/config-server-ms:latest
-    container_name: config-server-ms
-    ports:
-      - 8080:8080
-    depends_on:
-      - service-registry
-    networks:
-      - microservice-network
-      - postgres
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
+#  config-server:
+#    platform: linux/amd64
+#    image: liuzongrui1999/config-server-ms:latest
+#    container_name: config-server-ms
+#    ports:
+#      - 8080:8080
+#    depends_on:
+#      - service-registry
+#    networks:
+#      - microservice-network
+#      - postgres
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
   service-registry:
     platform: linux/amd64
     image: liuzongrui1999/servicereg:latest
@@ -81,7 +81,7 @@ services:
     ports:
       - 8081:8081
     depends_on:
-      - config-server
+#      - config-server
       - service-registry
       - rabbitmq
     networks:
@@ -111,7 +111,7 @@ services:
     ports:
       - 8083:8083
     depends_on:
-      - config-server
+#      - config-server
       - service-registry
       - rabbitmq
     networks:

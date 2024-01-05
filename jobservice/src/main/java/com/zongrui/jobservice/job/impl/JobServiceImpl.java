@@ -49,8 +49,9 @@ public class JobServiceImpl  implements JobService {
 //           , fallbackMethod = "companyBreakerFallback")
     public List<JobDTO> findAll() {
         List<Job> jobs = jobRepository.findAll();
+
         List<JobDTO> jobDTOS = new ArrayList<>();
-        System.out.println("Attempt: "+ ++attempt);
+        System.out.println("Attempt: "+ jobs.get(0).getTitle());
 //        for(Job job:jobs){
 //
 //        }
@@ -70,6 +71,7 @@ public class JobServiceImpl  implements JobService {
 
 //        List<Review> reviews = reviewResponse.getBody();
         JobDTO jobDTO = JobMapper.mapToJobWithCompanyDTO(job,company, reviews);
+        System.out.println(jobDTO.getReviews().get(0).getRating()+jobDTO.getCompany().getName());
         return jobDTO;
     }
 
